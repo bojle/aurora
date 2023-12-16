@@ -40,6 +40,17 @@ jmp start -> program[idx] == 101 00111
                              opc opr
 ```
 
+## Backend
+
+```
+void backend_write(struct IR *inst);
+void backend_program_write();
+
+char *backend_disasseble(uint8_t inst);
+
+10-0101010 -> lda 01
+
+```
 ## Memory
 
 2^5 = 32 unique addresses (Bytes) is the max memory we have. No program may
@@ -76,6 +87,7 @@ exit:
 
     
 Psuedo:
+
 ```
 for (i = 0; i < 10; ++i) 
     print hello
