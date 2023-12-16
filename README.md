@@ -15,6 +15,31 @@ cmp
 not
 ```
 
+## IR
+
+```
+struct IR {
+    uint8_t opcode;
+    uint8_t operand;
+};
+
+struct IR program[];
+
+program[0] = 101001;
+inst_push(1010101);
+
+int i = program[0];
+int i = inst_at(0);
+
+void inst_push(struct IR *inst);
+void inst_at(int idx);
+
+program[0] // 1st instruction
+
+jmp start -> program[idx] == 101 00111
+                             opc opr
+```
+
 ## Memory
 
 2^5 = 32 unique addresses (Bytes) is the max memory we have. No program may
@@ -40,12 +65,12 @@ start:
     lda a
     cmp 10          ; cmp_flag = 1
     jmp is_10
-not_10
+not_10:
     print no
     jmp exit
-is_10
+is_10:
     print 10
-exit
+exit:
 
 ```
 
